@@ -6,7 +6,7 @@ const emailErr = "must be a valid email.";
 const numberErr = "must be a number.";
 const longLengthErr = "must be less than 200 characters.";
 
-const validateUser = [
+const validateUserRequired = [
   body("firstName")
     .trim()
     .isAlpha()
@@ -20,6 +20,10 @@ const validateUser = [
     .isLength({ min: 1, max: 10 })
     .withMessage(`Last name ${shortLengthErr}`),
   body("email").trim().isEmail().withMessage(`Email ${emailErr}`),
+];
+
+const validateUser = [
+  validateUserRequired,
   body("age")
     .trim()
     .optional({ values: "falsy" })
@@ -97,4 +101,13 @@ exports.usersUpdatePost = [
 exports.usersDeletePost = (req, res) => {
   usersStorage.deleteUser(req.params.id);
   res.redirect("/");
+};
+
+exports.usersSearchGet = (req, res) => {
+  const { name, email } = req.query;
+
+  res.render("search", {
+    title: "User List (filtered)",
+    users: usersStorage.searchUsers({ name, email }),
+  });
 };
