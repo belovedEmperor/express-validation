@@ -17,6 +17,18 @@
                 Last Name:
                 <input type="text" name="lastName" id="lastName" value="<%= user.lastName %>" required>
             </label>
+            <label>
+                Email:
+                <input type="text" name="email" id="email" value="<%= user.email %>" required>
+            </label>
+            <label>
+                Age:
+                <input type="text" name="age" id="age" value="<%= user.age %>">
+            </label>
+            <label>
+                Bio:
+                <textarea name="bio" id="bio"><%= user.bio %></textarea>
+            </label>
             <button type="submit">Update user</button>
         </form>
         <a href="/">Back to home</a>
