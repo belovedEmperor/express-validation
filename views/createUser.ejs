@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><%= title %></title>
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <form action="/create" method="POST">
+            <label>
+                First Name:
+                <input type="text" name="firstName" id="firstName" required>
+            </label>
+            <label>
+                Last Name:
+                <input type="text" name="lastName" id="lastName" required>
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="/">Back to home</a>
+
+        <%- include("partials/errors.ejs") %>
+    </body>
+</html>
